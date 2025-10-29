@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Your Name — Portfolio</title>
+  <style>
+    :root { --bg:#ffffff; --fg:#0f172a; --muted:#64748b; --card:#f1f5f9; --accent:#6366f1; }
+    .dark { --bg:#0b1220; --fg:#e5e7eb; --muted:#94a3b8; --card:#111827; --accent:#8b5cf6; }
+    * { box-sizing: border-box; }
+    body { margin:0; font:16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji", "Segoe UI Emoji"; background:var(--bg); color:var(--fg); scroll-behavior:smooth; }
+    .container { max-width: 900px; margin: 0 auto; padding: 24px; }
+    header { display:flex; justify-content:space-between; align-items:center; gap:12px; padding:24px 0; position:sticky; top:0; background:var(--bg); backdrop-filter:saturate(180%) blur(6px); z-index:10; }
+    nav a { margin-right:16px; color:var(--muted); text-decoration:none; }
+    nav a:hover { color:var(--fg); }
+    h1 { font-size: clamp(28px, 5vw, 40px); margin:0; }
+    h2 { margin: 0 0 12px; }
+    .tag { display:inline-block; background:var(--card); padding:4px 10px; border-radius:999px; font-size:14px; }
+    .grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:16px; }
+    .card { background:var(--card); padding:16px; border-radius:16px; }
+    button { all:unset; cursor:pointer; padding:8px 12px; border-radius:999px; background:var(--accent); color:white; }
+    section { padding:40px 0; border-top:1px solid rgba(100,116,139,.2); }
+    footer { padding:32px 0; color:var(--muted); text-align:center; }
+    a.btn { all:unset; display:inline-block; padding:8px 12px; border-radius:999px; background:var(--accent); color:white; cursor:pointer; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div>
+        <h1>Your Name</h1>
+        <div class="tag">Web Developer • AI/ML</div>
+      </div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+        <button id="theme">Toggle theme</button>
+      </nav>
+    </header>
+
+    <section id="about">
+      <h2>About</h2>
+      <p>
+        Short bio about you. Mention what you do, what you love building, and the tech you enjoy.
+      </p>
+      <div class="grid">
+        <span class="tag">HTML</span>
+        <span class="tag">CSS</span>
+        <span class="tag">JavaScript</span>
+        <span class="tag">Python</span>
+        <span class="tag">AI/ML</span>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Project One</h3>
+          <p>A short line about what it does and the tech used.</p>
+          <a class="btn" href="#" target="_blank" rel="noopener">View</a>
+        </div>
+        <div class="card">
+          <h3>Project Two</h3>
+          <p>Another quick summary that fits in one sentence.</p>
+          <a class="btn" href="#" target="_blank" rel="noopener">Demo</a>
+        </div>
+        <div class="card">
+          <h3>Project Three</h3>
+          <p>Keep it simple and clear. Replace with your details.</p>
+          <a class="btn" href="#" target="_blank" rel="noopener">Code</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>
+        Reach me at <a id="email" href="mailto:you@example.com">you@example.com</a>
+        or use the button below.
+      </p>
+      <a class="btn" id="copy">Copy email</a>
+    </section>
+
+    <footer>
+      © <span id="year"></span> Your Name
+    </footer>
+  </div>
+
+  <script>
+    // Dark mode toggle with preference memory
+    const themeBtn = document.getElementById('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const saved = localStorage.getItem('theme');
+    if ((saved === 'dark') || (saved === null && prefersDark)) {
+      document.documentElement.classList.add('dark');
+    }
+    themeBtn.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+      localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+    });
+
+    // Current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Copy email helper
+    document.getElementById('copy').addEventListener('click', async () => {
+      const email = document.getElementById('email').textContent;
+      try {
+        await navigator.clipboard.writeText(email);
+        alert('Email copied!');
+      } catch (e) {
+        alert('Copy not supported on this browser.');
+      }
+    });
+  </script>
+</body>
+</html>
