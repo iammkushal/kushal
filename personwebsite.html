@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Personal Page</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; background: #0099FF; margin: 0; padding: 0; }
+    header { background: #0099FF; color: #000000; padding: 10px 0; }
+    section { margin: 20px; padding: 20px; background: #fff; border-radius: 8px; }
+    a { color: #333; text-decoration: none; margin: 0 10px; }
+    a:hover { color: blue; }
+    button { padding: 8px 16px; background: #333; color: #fff; border: none; border-radius: 5px; cursor: pointer; }
+    button:hover { background: blue; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Hi, I'm Your Kushal</h1>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>I am a web developer who loves simple and clean design.</p>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <p>1. Portfolio Website<br>2. To-Do App</p>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:you@example.com">you@example.com</a></p>
+    <button onclick="sayHello()">Click Me</button>
+  </section>
+
+  <script>
+    function sayHello() {
+      alert('Thanks for visiting my page!');
+    }
+  </script>
+</body>
+</html>
